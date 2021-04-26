@@ -1,0 +1,32 @@
+server {
+    listen       80;
+    listen  [::]:80;
+    server_name  localhost;
+
+    location / {
+        error_page 405 =200 $uri;
+        root   /usr/share/nginx/html;
+        index  index.html index.htm;
+    }
+
+    #error_page  404              /404.html;
+
+    # redirect server error pages to the static page /50x.html
+    #
+    error_page   500 502 503 504  /50x.html;
+    location = /50x.html {
+        root   /usr/share/nginx/html;
+    }
+
+    location /api/partners/v1/firehose/events {
+        proxy_buffering off;
+        proxy_set_header X-API-Key ${LIVE_STREAM_API_KEY};
+        proxy_pass ${LIVE_STREAM_URL};
+        add_header Access-Control-Allow-Origin *;
+    }
+
+#    location /web_assets/ {
+#        proxy_pass ${WEB_ASSETS_CDN};
+#    }
+
+}
