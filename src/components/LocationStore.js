@@ -51,7 +51,7 @@ export const LocationStore = {
                     "name": "Margaret Hamilton Conference Room",
                     "roomSensors": [
                         {
-                            "trackingId": "d2:d9:66:9f:b7:da"
+                            "trackingId": "e4:d8:20:06:58:75"
                         }
                     ],
                     "xyGeojson": {
